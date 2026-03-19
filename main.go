@@ -24,7 +24,8 @@ func main(){
 	router := gin.Default()
 
 	router.GET("/notes", noteController.NotesGet)
-
+	router.POST("/notes", noteController.NotesPost)
+	
 	if err := router.Run(); err != nil {
 		log.Fatalf("Failed to run server: %v\n", err)
 	}
