@@ -9,3 +9,15 @@ type Note struct {
 	CreatedAt time.Time
 	UpdatedAt time.Time
 }
+
+type CreateNote struct {
+	Title 	string `json:"title"`
+	Content string `json:"content"`
+}
+
+type NoteResponse struct {
+	ID 		uint
+	Title 	string `json:"title"`
+	Content string `json:"content"`
+	CreatedAt time.Time
+}
