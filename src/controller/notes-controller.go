@@ -77,8 +77,19 @@ func (c *NoteController) NotesDelete(ctx *gin.Context){
 		return;
 	}
 
+	errRes, code := c.Service.DeleteNotes(uint(notesId))
+
+	if errRes != "" {
+		log.Printf("Failed delete data note: %v\n", errRes)
+		ctx.JSON(code, gin.H{
+			"status": "failed",
+			"message": errRes,
+		})
+		return
+	}
+
 	ctx.JSON(http.StatusCreated, gin.H{
 		"status": "success",
-		"message": "Successfully create data note",
+		"message": "Successfully delete data note",
 	})
 }
