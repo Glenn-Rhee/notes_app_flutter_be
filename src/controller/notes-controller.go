@@ -65,3 +65,7 @@ func (c *NoteController) NotesPost(ctx *gin.Context){
 		"data": res,
 	})
 }
+
+func (c *NoteController) NotesDelete(ctx *gin.Context){
+	
+}
