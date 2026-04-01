@@ -67,5 +67,18 @@ func (c *NoteController) NotesPost(ctx *gin.Context){
 }
 
 func (c *NoteController) NotesDelete(ctx *gin.Context){
-	
+	notesId := ctx.Query("notesId")
+	if(notesId == ""){
+		ctx.JSON(http.StatusBadRequest, gin.H{
+			"status": "failed",
+			"message": "Notes id is required!",
+		})
+		return;
+	}
+
+
+	ctx.JSON(http.StatusCreated, gin.H{
+		"status": "success",
+		"message": "Successfully create data note",
+	})
 }
