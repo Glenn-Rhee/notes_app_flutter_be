@@ -25,7 +25,7 @@ func main(){
 
 	router.GET("/notes", noteController.NotesGet)
 	router.POST("/notes", noteController.NotesPost)
-	
+	router.DELETE("/notes", noteController.NotesDelete)
 	if err := router.Run(); err != nil {
 		log.Fatalf("Failed to run server: %v\n", err)
 	}
