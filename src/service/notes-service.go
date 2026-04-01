@@ -51,3 +51,7 @@ func (s *NoteService) CreateNotes(dataNote model.CreateNote) (res model.NoteResp
 		CreatedAt: note.CreatedAt,
 	}, nil
 }
+
+func (s *NoteService) DeleteNotes(id uint) (res model.NoteResponse, err error) {
+	
+}

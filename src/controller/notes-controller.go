@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"notes_app/src/model"
 	"notes_app/src/service"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 )
@@ -67,15 +68,14 @@ func (c *NoteController) NotesPost(ctx *gin.Context){
 }
 
 func (c *NoteController) NotesDelete(ctx *gin.Context){
-	notesId := ctx.Query("notesId")
-	if(notesId == ""){
+	notesId, err := strconv.ParseUint(ctx.Query("notesId"), 10, 64)
+	if(err != nil){
 		ctx.JSON(http.StatusBadRequest, gin.H{
 			"status": "failed",
 			"message": "Notes id is required!",
 		})
 		return;
 	}
-
 
 	ctx.JSON(http.StatusCreated, gin.H{
 		"status": "success",
