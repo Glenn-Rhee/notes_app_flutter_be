@@ -1,6 +1,7 @@
 package service
 
 import (
+	"net/http"
 	"notes_app/src/model"
 	"time"
 
@@ -52,6 +53,17 @@ func (s *NoteService) CreateNotes(dataNote model.CreateNote) (res model.NoteResp
 	}, nil
 }
 
-func (s *NoteService) DeleteNotes(id uint) (res model.NoteResponse, err error) {
-	
+func (s *NoteService) DeleteNotes(id uint) (string, int) {
+	err := s.DB.First(&model.Note{}, id).Error
+
+	if err != nil {
+		return "Data note not found!", http.StatusNotFound
+	}
+
+	err = s.DB.Delete(&model.Note{}, id).Error
+	if err != nil {
+		return "Failed delete data note!", http.StatusInternalServerError
+	}
+
+	return "", http.StatusOK
 }
