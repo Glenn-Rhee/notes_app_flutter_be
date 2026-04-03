@@ -68,4 +68,24 @@ func (s *NoteService) DeleteNotes(id uint) (string, int) {
 	return "", http.StatusOK
 }
 
-func (s *NoteService) UpdateNotes(id uint,)
+func (s *NoteService) UpdateNotes(id uint, dataNote model.CreateNote) (string, int) {
+	result := s.DB.First(&model.Note{}, id)
+
+	if result.Error != nil {
+		return "Data note not found!", http.StatusNotFound
+	}
+
+	result = s.DB.Model(&model.Note{}).
+				Where("id = ?", id).
+				Updates(model.Note{
+					Title:   dataNote.Title,
+					Content: dataNote.Content,
+					UpdatedAt: time.Now(),
+				})
+	
+	if result.Error != nil {
+		return "Failed update data note!", http.StatusInternalServerError
+	}
+
+	return "", http.StatusOK
+}
