@@ -104,6 +104,17 @@ func (c *NoteController) NotesPut(ctx *gin.Context){
 		})
 	}
 
+	var reqBody model.CreateNote
+
+	if err := ctx.ShouldBindJSON(&reqBody); err != nil {
+		ctx.JSON(http.StatusBadRequest, gin.H{
+			"status": "failed",
+			"message": "Failed get data",
+			"code": http.StatusBadRequest,
+		})
+		return
+	}
+
 	errRes, code := c.Service.UpdateNotes(uint(notesId), ctx)
 
 	if errRes != "" {

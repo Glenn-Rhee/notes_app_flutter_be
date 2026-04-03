@@ -67,3 +67,5 @@ func (s *NoteService) DeleteNotes(id uint) (string, int) {
 
 	return "", http.StatusOK
 }
+
+func (s *NoteService) UpdateNotes(id uint,)
