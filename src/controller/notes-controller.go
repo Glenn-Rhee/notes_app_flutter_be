@@ -115,7 +115,7 @@ func (c *NoteController) NotesPut(ctx *gin.Context){
 		return
 	}
 
-	errRes, code := c.Service.UpdateNotes(uint(notesId), ctx)
+	errRes, code := c.Service.UpdateNotes(uint(notesId), reqBody)
 
 	if errRes != "" {
 		log.Printf("Failed update data note: %v\n", errRes)
