@@ -93,3 +93,30 @@ func (c *NoteController) NotesDelete(ctx *gin.Context){
 		"message": "Successfully delete data note",
 	})
 }
+
+func (c *NoteController) NotesPut(ctx *gin.Context){
+	notesId, err := strconv.ParseInt(ctx.Query("notesId"), 10, 64)
+
+	if err != nil {
+		ctx.JSON(http.StatusBadRequest, gin.H{
+			"status": "failed",
+			"message": "Notes id is required!",
+		})
+	}
+
+	errRes, code := c.Service.UpdateNotes(uint(notesId), ctx)
+
+	if errRes != "" {
+		log.Printf("Failed update data note: %v\n", errRes)
+		ctx.JSON(code, gin.H{
+			"status": "failed",
+			"message": errRes,
+		})
+		return
+	}
+
+	ctx.JSON(http.StatusCreated, gin.H{
+		"status": "success",
+		"message": "Successfully update data note",
+	})
+}
