@@ -25,6 +25,7 @@ func main(){
 
 	router.GET("/notes", noteController.NotesGet)
 	router.POST("/notes", noteController.NotesPost)
+	router.PUT("/notes", noteController.NotesPut)
 	router.DELETE("/notes", noteController.NotesDelete)
 
 	if err := router.Run(); err != nil {
