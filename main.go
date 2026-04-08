@@ -26,6 +26,7 @@ func main(){
 	// Inisialisasi Router
 	router := gin.Default()
 
+	// Define Routes
 	router.GET("/notes", noteController.NotesGet)
 	router.POST("/notes", noteController.NotesPost)
 	router.PUT("/notes", noteController.NotesPut)
