@@ -19,6 +19,7 @@ func main(){
 
 	db.AutoMigrate(&model.Note{})
 
+	// Inisialisasi Service dan Controller
 	noteService := service.NewNoteService(db)
 	noteController := controller.NewNoteService(noteService)
 
