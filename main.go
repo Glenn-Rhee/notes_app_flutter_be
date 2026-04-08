@@ -11,6 +11,7 @@ import (
 )
 
 func main(){
+	// Koneksi Database
 	db, err := lib.DbConnect()
 	if err != nil {
 		log.Fatalf("Failed to connect DB: %v\n", err)
