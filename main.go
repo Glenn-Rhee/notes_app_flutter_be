@@ -23,6 +23,7 @@ func main(){
 	noteService := service.NewNoteService(db)
 	noteController := controller.NewNoteService(noteService)
 
+	// Inisialisasi Router
 	router := gin.Default()
 
 	router.GET("/notes", noteController.NotesGet)
