@@ -17,6 +17,7 @@ type CreateNote struct {
 	Content string `json:"content"`
 }
 
+// Struct untuk response data note
 type NoteResponse struct {
 	ID 		uint
 	Title 	string `json:"title"`
