@@ -2,6 +2,7 @@ package model
 
 import "time"
 
+// Note struct untuk merepresentasikan data note dalam database
 type Note struct {
 	ID        uint		`gorm:"primaryKey"`
 	Title     string	`gorm:"type:varchar(255);not null"`
