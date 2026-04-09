@@ -6,6 +6,7 @@ import (
 )
 
 func DbConnect() (*gorm.DB, error) {
+	// DSN (Data Source Name) untuk koneksi ke database MySQL
 	dsn := "root:@tcp(127.0.0.1:3306)/notes_app_flutter?charset=utf8mb4&parseTime=True&loc=Local"
 
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
