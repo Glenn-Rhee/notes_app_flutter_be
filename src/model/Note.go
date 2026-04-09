@@ -11,6 +11,7 @@ type Note struct {
 	UpdatedAt time.Time
 }
 
+// Struct untuk request body saat membuat note baru
 type CreateNote struct {
 	Title 	string `json:"title"`
 	Content string `json:"content"`
